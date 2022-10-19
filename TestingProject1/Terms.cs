@@ -54,6 +54,29 @@ namespace TestingProject1
             return res;
         }
 
+        public static string GetRootOfTheEquation(double a, double b, double c) //primer4
+        {
+            string result;
+            double D = b*b-4*a*c;
+            double X1;
+            double X2;
+            if (D < 0)
+            {
+                throw new ArgumentException("Discriminant < 0");
+            }
+            else if (D == 0)
+            {
+                X1 = -b / (2 * a);
+                X2 = X1;
+            }
+            else
+            {
+                X1 = (-b + Math.Sqrt(D)) / (2 * a);
+                X2 = (-b - Math.Sqrt(D)) / (2 * a);
+            }
+            return result = ($"X1 = {X1}, X2 = {X2}");
+        }
+
         public static string OutputNumber(int a) //dz2-primer5       
         {
             string res = "";
