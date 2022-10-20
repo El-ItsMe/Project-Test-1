@@ -54,10 +54,45 @@ namespace TestingProject1
             return res;
         }
 
+          public static string OutputInAscendingOrder(double a, double b, double c) //dz-2-primer3
+        {
+            string AscendingOrder;
+            if (a > b && b > c)
+            {
+                AscendingOrder = $"{c},{b},{a}";
+            }
+            else if (a > c && c > b)
+            {
+                AscendingOrder = $"{b},{c},{a}";
+            }
+            else if (b > a && a > c)
+            {
+                AscendingOrder = $"{c},{a},{b}";
+            }
+            else if (b > c && c > a)
+            {
+                AscendingOrder = $"{a},{c},{b}";
+            }
+            else if (c > b && b > a)
+            {
+                AscendingOrder = $"{a},{b},{c}";
+            }
+            else if (c > a && a > b)
+            {
+                AscendingOrder = $"{b},{a},{c}";
+
+            }
+            else
+            {
+                throw new ArgumentException("Same Numbers");
+            }
+            return AscendingOrder;
+        }
+
         public static string GetRootOfTheEquation(double a, double b, double c) //primer4
         {
             string result;
-            double D = b*b-4*a*c;
+            double D = b * b - 4 * a * c;
             double X1;
             double X2;
             if (D < 0)
@@ -76,6 +111,9 @@ namespace TestingProject1
             }
             return result = ($"X1 = {X1}, X2 = {X2}");
         }
+
+
+        
 
         public static string OutputNumber(int a) //dz2-primer5       
         {

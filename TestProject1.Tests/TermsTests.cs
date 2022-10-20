@@ -28,6 +28,21 @@ namespace TestProject1.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestCase(1, 3, 2, "1,2,3")]
+        [TestCase(8, 3, 5, "3,5,8")]
+        public void OutputInAscendingOrderTest(double a, double b, double c, string expected) //в порядке возрастания
+        {
+            string actual = Terms.OutputInAscendingOrder(a,b,c);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(1,1,3)]
+        [TestCase(5,5,5)]
+        public void OutputInAscendingOrder_WhenNumbersRepeat_SholdArgumentException(double a, double b, double c)
+        {
+            Assert.Throws<ArgumentException>(()=>Terms.OutputInAscendingOrder(a,b,c));
+        }
+
         [TestCase(21, "двадцать один")]
         [TestCase(18, "восемнадцать")]
         public void OutputNumberTest(int a, string expected) //вывод чисел в виде строки
