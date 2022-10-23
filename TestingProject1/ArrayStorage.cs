@@ -11,11 +11,11 @@ namespace TestingProject1
         //найти минимальный элемент массива (массивы-пример1)
         public static int GetMinValue(int[] arrayNumbers) 
         {
+
             if (arrayNumbers.Length == 0)
             {
                 throw new ArgumentException("Array length is zero");
             }
-
             int min = arrayNumbers[0];
             for (int i = 1; i < arrayNumbers.Length; i++)
             {
@@ -29,8 +29,12 @@ namespace TestingProject1
         }
 
         //найти максимальный элемент массива (массивы-пример2)
-        public static int GetMaxValue(int[] arrayNumbers) 
+        public static int GetMaxValue(int[] arrayNumbers)
         {
+            if (arrayNumbers.Length == 0)
+            {
+                throw new ArgumentException("Array length is zero");
+            }
             int max = arrayNumbers[0];
             for (int i = 1; i < arrayNumbers.Length; i++)
             {
@@ -39,11 +43,6 @@ namespace TestingProject1
                     max = arrayNumbers[i];
                 }
             }
-            if (arrayNumbers.Length == 0)
-            {
-                throw new ArgumentException("Array length is zero");
-            }
-
             return max;
         }
 
@@ -66,6 +65,10 @@ namespace TestingProject1
                     imin = i;
                 }
             }
+            if (arrayNumbers.Length == 0)
+            {
+                throw new ArgumentException("Array length is zero");
+            }
             return imin;
         }
 
@@ -87,6 +90,10 @@ namespace TestingProject1
                     imax = i;
                 }
             }
+            if (arrayNumbers.Length == 0)
+            {
+                throw new ArgumentException("Array length is zero");
+            }
             return imax;
         }
 
@@ -101,6 +108,10 @@ namespace TestingProject1
                 {
                     sum = sum + arrayNumbers[i];
                 }
+            }
+            if (arrayNumbers.Length == 0)
+            {
+                throw new ArgumentException("Array length is zero");
             }
             return sum;
         }
@@ -127,6 +138,10 @@ namespace TestingProject1
             {
                 throw new ArgumentException("Array length is Zero");
             }
+            if (arrayNumbers.Length == 0)
+            {
+                throw new ArgumentException("Array length is zero");
+            }
             return arrayNumbers;
         }
 
@@ -141,46 +156,107 @@ namespace TestingProject1
                     count = count + 1;
                 }
             }
+            if (arrayNumbers.Length == 0)
+            {
+                throw new ArgumentException("Array length is zero");
+            }
             return count;
         }
 
-        //Поменять местами первую и вторую часть массива (массивы-пример8)
-       /* public static int[] GetReverseFirstAndSecondPart(int[] a)
+        ////Поменять местами первую и вторую половину массива (массивы-пример8)
+        public static int[] GetReverseFirstAndSecondPart(int[] a)
         {
-            int j = a.Length/2;
-            int c = 0;
-            int i = 0;
-            int l = a.Length / 2;
-            while (j != a.Length)
+            if ((a.Length + 2) % 2 == 1)
             {
-                c = a[i];
-                a[i] = a[l];
-                a[l] = a[i];
-                i++;
-                l++;
+                int j = (a.Length/2)+1;
+                int c = 0;
+                int i = 0;
+                while (j != a.Length)
+                {
+                    c = a[i];
+                    a[i] = a[j];
+                    a[j] = c;
+                    i++;
+                    j++;
+                }
 
-                
-            }
-            }
-           /* else 
+            }            
+            else 
             {
-                int j = a.Length / 2;
-                while (i != middle)
-                { 
-                    c = 0;
-                c = a[i];
-                a[i] = a[j];
-                a[j] = c;
-                i = i + 1;
-                j = j + 1;
+                int j = (a.Length / 2);
+                int c = 0;
+                int i = 0;
+                while (j != a.Length)
+                {
+                    c = a[i];
+                    a[i] = a[j];
+                    a[j] = c;
+                    i++;
+                    j++;
                 }
             }
 
             if (a.Length == 0)
             {
                 throw new ArgumentException("Array length is Zero");
-            } 
+            }
             return a;
-        } */
+        }
+
+        //Сортировка методом пузырька - расстановка элементов по убыванию (массивы-пример9)
+
+        public static int[] GetBumbleSort(int[] ArrayNumbers)
+        {
+            int i;
+            int j;
+            int c;
+            int l = ArrayNumbers.Length;
+            for (j = 0; j < l; l--)
+            {
+                for (i = 1; i < l; i++)
+                {
+                    if (ArrayNumbers[i] < ArrayNumbers[i - 1])
+                    {
+                        c = ArrayNumbers[i - 1];
+                        ArrayNumbers[i - 1] = ArrayNumbers[i];
+                        ArrayNumbers[i] = c;
+                    }
+                }
+            }
+            if (ArrayNumbers.Length == 0)
+            {
+                throw new ArgumentException("Array length is zero");
+            }
+            return ArrayNumbers;
+        }
+
+        //Сортировка методом выбора - расстановка элементов по убыванию (массивы-пример10)
+
+        public static int[] GetSelectIncreseSort(int[] ArrayNumbers)
+        {
+            int i;
+            int j;
+            int c;
+            int l = ArrayNumbers.Length;
+            for (i = 0; i < l-1; i++)
+            {
+                int indexMin = i;
+                for (j = i+1; j < l; j++)
+                {
+                    if (ArrayNumbers[j] > ArrayNumbers[indexMin])
+                    {
+                        indexMin = j;
+                    }
+                }
+                c = ArrayNumbers[indexMin];
+                ArrayNumbers[indexMin] = ArrayNumbers[i];
+                ArrayNumbers[i] = c;
+            }
+            if (ArrayNumbers.Length == 0)
+            {
+                throw new ArgumentException("Array length is zero");
+            }
+            return ArrayNumbers;
+        }
     }
 }
