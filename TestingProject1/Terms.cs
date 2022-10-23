@@ -8,27 +8,30 @@ namespace TestingProject1
 {
     public static class Terms
     {
-        public static double FindResult(double a, double b)
+        //обычное сравнение (условия-пример1)
+        public static double FindResult(double number1, double number2)
         {
             double res;
 
-            if (a > b)
+            if (number1 > number2)
             {
-                res = a + b;
+                res = number1 + number2;
             }
-            else if (a == b)
+            else if (number1 == number2)
             {
-                res = a * b;
+                res = number1 * number2;
             }
             else
             {
-                res = a - b;
+                res = number1 - number2;
             }
 
             return res;
         }
 
-        public static string FindQuarter(double x, double y) //dz-2-primer2
+
+        //определение четверти (условия-пример2)
+        public static string FindQuarter(double x, double y)
         {
             string res;
             if (x > 0 && y > 0)
@@ -54,42 +57,30 @@ namespace TestingProject1
             return res;
         }
 
-          public static string OutputInAscendingOrder(double a, double b, double c) //dz-2-primer3
+        //в порядке возрастания(условия-пример3)
+        public static int[] OutputInAscendingOrder(int[] array)
         {
-            string AscendingOrder;
-            if (a > b && b > c)
-            {
-                AscendingOrder = $"{c},{b},{a}";
-            }
-            else if (a > c && c > b)
-            {
-                AscendingOrder = $"{b},{c},{a}";
-            }
-            else if (b > a && a > c)
-            {
-                AscendingOrder = $"{c},{a},{b}";
-            }
-            else if (b > c && c > a)
-            {
-                AscendingOrder = $"{a},{c},{b}";
-            }
-            else if (c > b && b > a)
-            {
-                AscendingOrder = $"{a},{b},{c}";
-            }
-            else if (c > a && a > b)
-            {
-                AscendingOrder = $"{b},{a},{c}";
-
-            }
-            else
-            {
-                throw new ArgumentException("Same Numbers");
-            }
-            return AscendingOrder;
+                int[] arrayreverse = new int[3];
+                for (int i = 0; i < 2; i++)
+                {
+                    int indexmin = i;
+                    for (int j = i + 1; j < 3; j++)
+                    {
+                        if (array[j] < array[indexmin])
+                        {
+                            indexmin = j;
+                        }
+                    }
+                    int tmp = array[indexmin];
+                    array[indexmin] = array[i];
+                    array[i] = tmp;
+                }
+                return array;
         }
 
-        public static string GetRootOfTheEquation(double a, double b, double c) //primer4
+        //корни квадратного уравнения (условия пример4)
+
+        public static string GetRootOfTheEquation(double a, double b, double c)
         {
             string result;
             double D = b * b - 4 * a * c;
@@ -113,17 +104,17 @@ namespace TestingProject1
         }
 
 
-        
 
-        public static string OutputNumber(int a) //dz2-primer5       
+        //вывод чисел в виде строки(условия-пример5)
+        public static string OutputNumber(int numberA)      
         {
             string res = "";
             string tens = "";
             string units = "";
-            int castnoe = a / 10;
+            int castnoe = numberA / 10;
             if (castnoe == 1)
             {
-                switch (a % 10)
+                switch (numberA % 10)
                 {
                     case 0:
                         tens = "десять";
@@ -199,7 +190,7 @@ namespace TestingProject1
                     default: break;
                 }
 
-                switch (a % 10)
+                switch (numberA % 10)
                 {
                     case 1:
                         units = "один";
@@ -232,11 +223,11 @@ namespace TestingProject1
             }
             res = tens + units;
             
-            if (a > 99)
+            if (numberA > 99)
             { 
                 throw new ArgumentException("a > 99");
             }
-            if (a < 10)
+            if (numberA < 10)
             {
                 throw new ArgumentException("a < 10");
             }
